@@ -44,33 +44,37 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Commit Date:</b> {last_commit}\n\n'\
-            f'<b>Bot Uptime:</b> {currentTime}\n'\
-            f'<b>OS Uptime:</b> {osUptime}\n\n'\
-            f'<b>Total Disk Space:</b> {total}\n'\
-            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
-            f'<b>Upload:</b> {sent}\n'\
-            f'<b>Download:</b> {recv}\n\n'\
-            f'<b>CPU:</b> {cpuUsage}%\n'\
-            f'<b>RAM:</b> {mem_p}%\n'\
-            f'<b>DISK:</b> {disk}%\n\n'\
-            f'<b>Physical Cores:</b> {p_core}\n'\
-            f'<b>Total Cores:</b> {t_core}\n\n'\
-            f'<b>SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
-            f'<b>Memory Total:</b> {mem_t}\n'\
-            f'<b>Memory Free:</b> {mem_a}\n'\
-            f'<b>Memory Used:</b> {mem_u}\n'
-    sendMessage(stats, context.bot, update.message)
+    stats = f'<b>╭──「☣️ тєямι ѕтαтѕ ☣️」</b>\n' \
+            f'<b>│</b>\n' \
+            f'<b>├⌬ Lᴀsᴛ Cᴏᴍᴍɪᴛ→</b> {last_commit}\n'\
+            f'<b>├⌬ Uᴘᴛɪᴍᴇ→</b> {currentTime}\n'\
+            f'<b>├⌬ OS Uᴘᴛɪᴍᴇ→</b> {osUptime}\n'\
+            f'<b>├⌬ Tᴏᴛᴀʟ Dɪsᴋ→</b> {total}\n'\
+            f'<b>├⌬ Usᴇᴅ→</b> {used}\n'\
+            f'<b>├⌬ Fʀᴇᴇ→</b> {free}\n'\
+            f'<b>├⌬ Uᴘʟᴏᴀᴅ→</b> {sent}\n'\
+            f'<b>├⌬ Dᴏᴡɴʟᴏᴀᴅ→</b> {recv}\n'\
+            f'<b>├⌬ Cᴘᴜ→</b> {cpuUsage}%\n'\
+            f'<b>├⌬ Rᴀᴍ→</b> {mem_p}%\n'\
+            f'<b>├⌬ Dɪsᴋ→</b> {disk}%\n'\
+            f'<b>├⌬ Pʜʏsɪᴄᴀʟ Cᴏʀᴇs→</b> {p_core}\n'\
+            f'<b>├⌬ Tᴏᴛᴀʟ Cᴏʀᴇs→</b> {t_core}\n'\
+            f'<b>├⌬ Sᴡᴀᴘ→</b> {swap_t}\n'\
+            f'<b>├⌬ Usᴇᴅ→</b> {swap_p}%\n'\
+            f'<b>├⌬ Tᴏᴛᴀʟ→</b> {mem_t}\n'\
+            f'<b>├⌬ Fʀᴇᴇ→</b> {mem_a}\n'\
+            f'<b>╰─ Usᴇᴅ→</b> {mem_u}\n'
+     update.effective_message.reply_photo("https://te.legra.ph/file/426b9621c4f8f4141d921.jpg", stats, parse_mode='HTMl')
 
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("Repo", "https://github.com/arshsisodiya/helios-mirror")
-    buttons.buildbutton("Support Group", "https://t.me/mirrorsociety")
+    buttons.buildbutton("🤴 𝐎𝐰𝐧𝐞𝐫 🤴", "https://t.me/Terminator090")
+    buttons.buildbutton("☠️ 𝐌𝐢𝐫𝐫𝐨𝐫 𝐆𝐫𝐨𝐮𝐩 ☠️", "https://t.me/cloudstation9")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
-        start_string = f'''
-This bot can mirror all your links to Google Drive!
+        start_string = f''' 🙋𝐇𝐞𝐲 𝐃𝐮𝐝𝐞!
+𝐓𝐡𝐢𝐬 𝐁𝐨𝐭 𝐂𝐚𝐧 𝐌𝐢𝐫𝐫𝐨𝐫 𝐀𝐥𝐥 𝐘𝐨𝐮𝐫 𝐓𝐡𝐢𝐧𝐠𝐬 𝐓𝐨 𝐆𝐃𝐫𝐢𝐯𝐞 (𝐒𝐡𝐚𝐫𝐞𝐝 𝐃𝐫𝐢𝐯𝐞)!
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
         sendMarkup(start_string, context.bot, update.message, reply_markup)
@@ -219,9 +223,9 @@ def main():
                 if ospath.isfile(".restartmsg"):
                     with open(".restartmsg") as f:
                         chat_id, msg_id = map(int, f)
-                    msg = 'Restarted successfully!'
+                    msg = 'MIRROR BOT RESTARTED!\n\n𝐏𝐥𝐞𝐚𝐬𝐞 𝐬𝐭𝐚𝐫𝐭 𝐲𝐨𝐮𝐫 𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐬 𝐚𝐠𝐚𝐢𝐧\n\n#Rebooted #Updated'
                 else:
-                    msg = 'Bot Restarted!'
+                    msg = '𝕄𝕀ℝℝ𝕆ℝ 𝔹𝕆𝕋 ℝ𝔼𝕊𝕋𝔸ℝ𝕋𝔼𝔻!\n\n𝐏𝐥𝐞𝐚𝐬𝐞 𝐬𝐭𝐚𝐫𝐭 𝐲𝐨𝐮𝐫 𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐬 𝐚𝐠𝐚𝐢𝐧\n\n𝐁𝐎𝐓 𝐎𝐅 𝐁𝐑𝐔𝐂𝐄 𝐌𝐈𝐑𝐑𝐎𝐑\n\n#Rebooted #Restarted'
                 for tag, links in data.items():
                      msg += f"\n\n{tag}: "
                      for index, link in enumerate(links, start=1):
@@ -242,7 +246,7 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("𝕄𝕀ℝℝ𝕆ℝ 𝔹𝕆𝕋 ℝ𝔼𝕊𝕋𝔸ℝ𝕋𝔼𝔻!\n\n𝐏𝐥𝐞𝐚𝐬𝐞 𝐬𝐭𝐚𝐫𝐭 𝐲𝐨𝐮𝐫 𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐬 𝐚𝐠𝐚𝐢𝐧\n\n𝐁𝐎𝐓 𝐎𝐅 Termi 𝐌𝐈𝐑𝐑𝐎𝐑\n\n#Rebooted #Updated", chat_id, msg_id)
         osremove(".restartmsg")
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
